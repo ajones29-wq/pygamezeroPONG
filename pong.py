@@ -3,11 +3,11 @@ import pgzrun
 WIDTH = 600
 HEIGHT = 400
 
-# Where Actors Are Made
 paddle_left = Rect((30, HEIGHT // 2 - 30, 10, 60))
 paddle_right = Rect((WIDTH - 40, HEIGHT // 2 - 30, 10, 60))
 ball = Rect((WIDTH // 2, HEIGHT // 2, 10, 10))
 ball_vel = [5, 5]  
+
 
 wkey = Actor('wkey')
 wkey.x = 100
@@ -32,19 +32,17 @@ bouncyball3 = Rect((400, 266, 50, 50))
 score = 0
 score1 = 0
 
-#Game Start Waiting
+button = Rect((100, 100, 200, 50))
 
 game_started = False
 
 show_wkey = True
 
-# Starts Game
-
 def start_game():
     global game_started
     game_started = True
 
-# Hides all keyboard icons
+
 def hide_wkey():
     global show_wkey
     global show_skey
@@ -55,18 +53,15 @@ def hide_wkey():
     show_upkey = False
     show_downkey = False 
 
-# Clock
-
 clock.schedule_unique(start_game, 3.0)
 
 clock.schedule_unique(hide_wkey, 10.0)
-
-# Main Code
 
 def update():
     global score
     global score1
     global game_started 
+    global ball_vel
 
     if keyboard.w and paddle_left.top > 0:
         paddle_left.y -= 5
@@ -80,6 +75,8 @@ def update():
     if not game_started:
         return 
 
+     
+        
     ball.x += ball_vel[0]
     ball.y += ball_vel[1]
    
@@ -109,7 +106,9 @@ def update():
 
     if ball.colliderect(paddle_right):
         score1 = score1 + 1
-# Drawings
+
+
+
 
 def draw():
     screen.clear()
@@ -136,6 +135,5 @@ def draw():
 
     if not game_started:
         screen.draw.text("GET READY!", center=(WIDTH // 2, HEIGHT // 4), color="orange", fontsize=50)
-# Game Starts
 
 pgzrun.go()
