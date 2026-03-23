@@ -152,11 +152,9 @@ def draw():
     if bw_mode:
         color1, color2, color3 = "white", "gray", "white"
         button_text = "Accessibility"
-        get_ready_color = "white"
     else:
         color1, color2, color3 = "green", "yellow", "red"
         button_text = "Accessibility"
-        get_ready_color = "orange"
 
     screen.draw.filled_rect(bouncyball, color1)
     screen.draw.filled_rect(bouncyball2, color2)
@@ -167,6 +165,6 @@ def draw():
     screen.draw.text(button_text, center=button.center, color="white", fontsize=20)
 
     if not game_started:
-        screen.draw.text("GET READY!", center=(WIDTH // 2, HEIGHT // 4), color=get_ready_color, fontsize=50)
+        screen.draw.text("GET READY!", center=(WIDTH // 2, HEIGHT // 4), color= ('orange'), fontsize=50)
 
 pgzrun.go()
